@@ -1,0 +1,47 @@
+<!-- ko if: isAvailable() -->
+<div id="dotsquares_opc_store_credit"
+     data-bind="mageInit: {'collapsible':{'openedState': 'dotsquares_opc_collapsible_opened', 'active': isApplied()}}">
+    <div class="dotsquares_opc_universal_wrapper" data-role="title">
+        <button class="dotsquares_opc_button with_angle active" data-role="trigger">
+            <!-- ko i18n: 'Store Credit'--><!-- /ko -->
+            -&nbsp;<!-- ko text: formatBalance() --><!-- /ko -->
+        </button>
+    </div>
+    <div class="dotsquares_opc_store_credit" data-role="content">
+        <!-- ko if: isApplied() -->
+        <div class="dotsquares_opc_additional_payment_info dotsquares_opc_universal_wrapper">
+            <div class="dotsquares_opc_additional_payment_label">
+                <!-- ko i18n: 'Previous Credit Balance'--><!-- /ko -->:
+            </div>
+            <div class="dotsquares_opc_additional_payment_value">
+                <!-- ko text: formatBalance() --><!-- /ko -->
+            </div>
+            <br/>
+            <div class="dotsquares_opc_additional_payment_label">
+                <!-- ko i18n: 'New Credit Balance'--><!-- /ko -->:
+            </div>
+            <div class="dotsquares_opc_additional_payment_value">
+                <!-- ko text: formatBalanceUsed() --><!-- /ko -->
+            </div>
+        </div>
+        <div class="dotsquares_opc_universal_wrapper">
+            <button class="dotsquares_opc_button" data-bind="'title': $t('Remove'), click: remove">
+                <!-- ko i18n: 'Remove'--><!-- /ko -->
+            </button>
+        </div>
+        <!-- /ko -->
+        <!-- ko ifnot: isApplied() -->
+        <div class="dotsquares_opc_small_button_container dotsquares_opc_universal_wrapper">
+            <button class="dotsquares_opc_small_button active"
+                    data-bind="'title': $t('Apply'), click: sendRequest">
+                <!-- ko i18n: 'Apply'--><!-- /ko -->
+            </button>
+            <button class="dotsquares_opc_small_button"
+                    data-bind="'title': $t('Cancel'), click: cancel">
+                <!-- ko i18n: 'Cancel'--><!-- /ko -->
+            </button>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Checkout\Block\Onepage\Success" type="Dotsquares\Opc\Block\Onepage\Success" />
+    <preference for="Magento\Checkout\Block\Onepage" type="Dotsquares\Opc\Block\Onepage" />
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="dotsquares_opc_extended_checkout_config"
+                      xsi:type="object">Dotsquares\Opc\Model\ExtendedCheckoutConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Url\SecurityInfo">
+        <arguments>
+            <argument name="secureUrlList" xsi:type="array">
+                <item name="checkout_index" xsi:type="string">/onepage</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Dotsquares\Opc\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="updateLayout" xsi:type="object">Dotsquares\Opc\Block\Checkout\UpdateLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Directory\Model\ResourceModel\Country\Collection">
+        <plugin name="dotsquares_opc_country_collection"
+                type="Dotsquares\Opc\Plugin\Country\Collection"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="dotsquares_opc_checkout_controller"
+                type="Dotsquares\Opc\Plugin\Checkout\Controller\Index\Index"/>
+    </type>
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="dotsquares_opc_get_checkout_url_dcp"
+                type="Dotsquares\Opc\Plugin\Checkout\DefaultConfigProvider"/>
+    </type>
+    <type name="Magento\Checkout\Block\Onepage\Link">
+        <plugin name="dotsquares_opc_get_checkout_url_onepage_link"
+                type="Dotsquares\Opc\Plugin\Checkout\Block\Onepage\Link"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="dotsquares_opc_get_checkout_url_cart_sidebar"
+                type="Dotsquares\Opc\Plugin\Checkout\Block\Cart\Sidebar"/>
+    </type>
+    <type name="Magento\Checkout\Block\Link">
+        <plugin name="dotsquares_opc_get_checkout_url_link"
+                type="Dotsquares\Opc\Plugin\Checkout\Block\Link"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart">
+        <plugin name="dotsquares_opc_get_checkout_url_cart"
+                type="Dotsquares\Opc\Plugin\Checkout\Block\Cart"/>
+    </type>
+</config>

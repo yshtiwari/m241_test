@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dotsquares_Sizechart::parent" title="Sizechart" module="Dotsquares_Sizechart" sortOrder="100" resource="Dotsquares_Sizechart::parent"/>
+        <add id="Dotsquares_Sizechart::index" title="Sizechart Index" module="Dotsquares_Sizechart" sortOrder="10" action="sizechart/index" resource="Dotsquares_Sizechart::index" parent="Dotsquares_Sizechart::parent"/>
+		
+    </menu>
+</config>

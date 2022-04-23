@@ -1,0 +1,17 @@
+<?php
+    $catalogHelperData = $this->helper('Magento\Catalog\Helper\Data');
+    $categoryObject = $catalogHelperData->getCategory();
+    echo "<pre>";
+    print_r($categoryObject->getData());
+    $categoryId = $categoryObject->getId();
+    $categoryName = $categoryObject->getName();
+?>
+
+<?php
+if(!$categoryObject['image']){
+echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('catbanner')->toHtml(); 	
+}
+
+
+
+?>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Dotsquares. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dotsquares_ordercomment>
+            <general>
+                <is_show_in_myaccount>1</is_show_in_myaccount>
+                <max_length></max_length>	
+				<state>0</state>				
+            </general>		
+        </dotsquares_ordercomment>
+    </default>
+</config>

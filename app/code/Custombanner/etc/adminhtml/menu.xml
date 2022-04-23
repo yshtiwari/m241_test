@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dotsquares_Custombanner::parent" title="Custombanner" module="Dotsquares_Custombanner" sortOrder="100" resource="Dotsquares_Custombanner::parent"/>
+        <add id="Dotsquares_Custombanner::index" title="Custombanner Index" module="Dotsquares_Custombanner" sortOrder="10" action="custombanner/index" resource="Dotsquares_Custombanner::index" parent="Dotsquares_Custombanner::parent"/>
+		
+    </menu>
+</config>

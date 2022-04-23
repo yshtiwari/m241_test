@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var $block \Dotsquares\Opc\Block\Ga\Ab
+ */
+if ($block->opcHelper->isEnable()
+    && $block->opcHelper->isModuleOutputEnabled('Dotsquares_Opc')
+    && $block->opcHelper->isGaAbEnable()
+    && $block->opcHelper->getGaAbCode()) {
+    echo $block->opcHelper->getGaAbCode();
+}

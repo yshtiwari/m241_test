@@ -1,0 +1,29 @@
+<!-- ko if: (isRequired() && getIsVisible())-->
+<div id="dotsquares_opc_login_captcha" data-bind="dotsquaresBlockLoader: getIsLoading()">
+    <div class="dotsquares_opc_captcha_image dotsquares_opc_universal_wrapper">
+        <img data-bind="attr: {
+                                        alt: $t('Please type the letters below'),
+                                        height: imageHeight(),
+                                        src: getImageSource(),
+                                        }"
+             class="captcha-img"/>
+    </div>
+    <div class="dotsquares_opc_captcha_reload_sensitive_container dotsquares_opc_universal_wrapper">
+        <!-- ko if: isCaseSensitive()-->
+        <div class="dotsquares_opc_case_sensitive_captcha">
+            <!-- ko i18n: 'Captcha is case sensitive'--><!-- /ko -->&nbsp;&nbsp;•&nbsp;&nbsp;
+        </div>
+        <!-- /ko -->
+        <div class="dotsquares_opc_refresh_captcha_button" data-bind="attr: {title: $t('Reload captcha')}, click: refresh">
+            <!-- ko i18n: 'Reload captcha'--><!-- /ko -->
+        </div>
+    </div>
+    <div class="field">
+        <div class="control captcha">
+            <input name="captcha_string" type="text" class="input-text required-entry"
+                   data-bind="value: captchaValue(), attr: {id: 'captcha_' + formId, 'data-scope': dataScope, placeholder: $t('Please type the letters below')+' *'}"/>
+            <input name="captcha_form_id" type="hidden" data-bind="value: formId,  attr: {'data-scope': dataScope}"/>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

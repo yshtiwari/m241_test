@@ -1,0 +1,20 @@
+<!-- ko if: config.isEnabled -->
+<div class="field">
+    <div id="dotsquares_opc_shipping_policy"
+            data-bind="mageInit: {'collapsible':{'openedState': 'dotsquares_opc_collapsible_opened'}}"
+            class="dotsquares_opc_shipping_policy_block dotsquares_opc_collapsible_container">
+        <div class="dotsquares_opc_universal_wrapper" data-role="title">
+            <button class="dotsquares_opc_button with_angle active" data-role="trigger">
+            <!-- ko i18n: 'See our Shipping Policy' --><!-- /ko -->
+            </button>
+        </div>
+        <div class="dotsquares_opc_universal_wrapper dotsquares_opc_collapsible_content"
+             data-role="content"
+        >
+            <div class="dotsquares_opc_collapsible_content_scrollable" data-bind="html: config.shippingPolicyContent, afterRender: appendScrollbar">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko !-->

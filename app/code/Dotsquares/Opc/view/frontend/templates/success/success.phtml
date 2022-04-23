@@ -1,0 +1,179 @@
+<?php
+/**
+ * @var $block \Dotsquares\Opc\Block\Onepage\Success
+ */
+?>
+<?php
+$isShowRegistrationForm = $block->isShowRegistrationForm();
+$opcHelper = $block->opcHelper;
+?>
+<div class="dotsquares_success_page_wrapper dotsquares_main_wrapper">
+    <div class="dotsquares_opc_alternative_wrapper">
+        <div class="dotsquares_opc_column dotsquares_opc_success_page_column">
+            <div class="dotsquares_opc_alternative_column">
+                <div class="dotsquares_opc_universal_wrapper dotsquares_opc_column_name">
+                    <?php echo __('Order Confirmation'); ?>
+                </div>
+                <div class="dotsquares_opc_column_content">
+                    <div class="dotsquares_opc_universal_wrapper dotsquares_success_page_info">
+                        <?php if ($block->getOrderId()) { ?>
+                            <?php if ($block->getCanViewOrder()) { ?>
+                                <?php echo sprintf(__(
+                                    'Your order (%s) has been placed. You will receive an email with more details of your purchase.'),
+                                    sprintf(
+                                        '<a href="%s">#%s</a>',
+                                        $block->escapeHtml($block->getViewOrderUrl()),
+                                        $block->escapeHtml($block->getOrderId())
+                                    )
+                                ); ?>
+                            <?php } else { ?>
+                                <?php echo sprintf(__(
+                                    'Your order (%s) has been placed. You will receive an email with more details of your purchase.'),
+                                    '#' . $block->escapeHtml($block->getOrderId())
+                                ); ?>
+                            <?php } ?>
+                        <?php } ?>
+                        <?php echo $block->getAdditionalInfoHtml() ?>
+                    </div>
+                    <?php if ($block->getCanViewOrder() && $block->getCanPrintOrder()) : ?>
+                        <div class="dotsquares_opc_universal_wrapper dotsquares_success_page_info">
+                            <?php /* @escapeNotVerified */
+                            echo __('<a href="%1" target="_blank" class="printReceipt">Print receipt</a>', $block->getPrintUrl()) ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="dotsquares_opc_universal_wrapper">
+                        <a href="<?php echo $block->getUrl(); ?>"
+                           class="dotsquares_opc_button <?php if ($block->isCustomerLoggedIn()) { ?>active<?php } ?>"
+                           title="<?php echo __('Continue Shopping'); ?>">
+                            <?php echo __('Continue Shopping'); ?>
+                        </a>
+                    </div>
+                    <?php if ($block->isCustomerLoggedIn()) { ?>
+                        <div class="dotsquares_opc_universal_wrapper">
+                            <a href="<?php echo $block->getCustomerAccountUrl(); ?>"
+                               class="dotsquares_opc_button"
+                               title="<?php echo __('My Account'); ?>">
+                                <?php echo __('My Account'); ?>
+                            </a>
+                        </div>
+                    <?php } ?>
+                    <?php if ($isShowRegistrationForm) { ?>
+                        <div class="dotsquares_opc_section_delimiter"></div>
+                        <div class="dotsquares_opc_universal_wrapper">
+
+                            <div id="dotsquares_opc_open_registration_form">
+                                <div class="dotsquares_opc_universal_wrapper">
+                                    <button type="button"
+                                            id="dotsquares_success_page_open_register_form"
+                                            class="dotsquares_opc_button active"
+                                            title="<?php echo __('Create Account'); ?>">
+                                        <?php echo __('Create Account'); ?>
+                                    </button>
+                                </div>
+                                <div class="dotsquares_opc_universal_wrapper dotsquares_opc_success_page_create_account_info">
+                                    <?php echo __('Save your shipping and payment details for your next purchase.') ?>
+                                </div>
+                            </div>
+
+                            <form id="form-validate" class="dotsquares_opc_wrapper dotsquares_opc_create_account_form" action="/" method="post" enctype="multipart/form-data" autocomplete="off" style="display:none;">
+                                <fieldset class="dotsquares_opc_alternative_wrapper fieldset create account" data-hasrequired="* Required Fields">
+                                    <div class="field required">
+                                        <div class="control">
+                                            <input type="password"
+                                                   id="dotsquares_opc_create_account_password"
+                                                   class="dotsquares_opc_input dotsquares_opc_field"
+                                                   name="password"
+                                                   data-password-min-length="8"
+                                                   data-password-min-character-sets="3"
+                                                   data-validate="{required:true,'validate-customer-password':true}"
+                                                   autocomplete="off"
+                                                   aria-required="true" />
+                                            <span class="dotsquares_opc_show_hide_password active"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="dotsquares_opc_alternative_wrapper dotsquares_opc_universal_wrapper">
+                                    <button type="submit"
+                                            id="dotsquares_opc_create_account_button"
+                                            class="dotsquares_opc_button dotsquares_opc_create_account_button active"
+                                            title="<?php echo __('Create Account'); ?>">
+                                        <?php echo __('Create Account'); ?>
+                                    </button>
+                                </div>
+                                <div class="dotsquares_opc_universal_wrapper dotsquares_opc_message" style="display:none;"></div>
+                            </form>
+
+                            <div id="dotsquares_created_account_page" style="display:none;">
+                                <div class="dotsquares_opc_universal_wrapper">
+                                    <button type="button"
+                                            id="dotsquares_success_page_login_btn"
+                                            class="dotsquares_opc_button active"
+                                            onclick="window.location.href='<?php echo $block->getLogInUrl(); ?>'"
+                                            title="<?php echo __('Log In'); ?>">
+                                        <?php echo __('Log In'); ?>
+                                    </button>
+                                </div>
+                                <div class="dotsquares_opc_universal_wrapper dotsquares_opc_message" style="display:none;"></div>
+                            </div>
+
+                        </div>
+
+                        <script>
+                            require([
+                                'jquery',
+                                'mage/mage',
+                                'Magento_Ui/js/model/messageList'
+                            ], function ($, messageList) {
+                                $('body').addClass('dotsquares_opc_success_page');
+                                var registration_form = $('#form-validate'),
+                                    password_input = $('#dotsquares_opc_create_account_password');
+
+                                registration_form.mage('validation');
+
+                                $(document).on('click', '#dotsquares_success_page_open_register_form', function () {
+                                    $(this).closest('#dotsquares_opc_open_registration_form').hide();
+                                    registration_form.show();
+                                    password_input.focus();
+                                });
+
+                                $(document).on('click', '.dotsquares_opc_show_hide_password', function () {
+                                    $(this).toggleClass('active');
+                                    (password_input.attr('type') === 'text') ? password_input.attr('type', 'password') : password_input.attr('type', 'text');
+                                });
+
+                                $(document).on('submit', '#form-validate.dotsquares_opc_create_account_form', function (e) {
+                                    e.preventDefault();
+                                    if(registration_form.validation('isValid') === true) {
+                                        $.ajax({
+                                            url: "<?php echo $block->getCreateAccountWithPasswordUrl(); ?>",
+                                            type: 'post',
+                                            showLoader: true,
+                                            data: {'password': password_input.val()},
+                                            context: $('.dotsquares_success_page_wrapper'),
+                                            dataType: 'json'
+                                        }).done(
+                                            function (response) {
+                                                var created_account_section = $('#dotsquares_created_account_page');
+                                                if (response.errors === false) {
+                                                    $('#form-validate.dotsquares_opc_create_account_form').hide();
+                                                    created_account_section.show();
+                                                    created_account_section.find('.dotsquares_opc_message').html('').html('<div class="dotsquares_opc_message_success">' + response.message + '</div>').show();
+                                                } else {
+                                                    $(this).find('.dotsquares_opc_message').html('').html('<div class="dotsquares_opc_message_error">' + response.message + '</div>').show();
+                                                }
+                                            }
+                                        ).fail(
+                                            function (response) {
+                                                messageList.addErrorMessage(response);
+                                            }
+                                        );
+                                    }
+                                });
+                            })
+                        </script>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

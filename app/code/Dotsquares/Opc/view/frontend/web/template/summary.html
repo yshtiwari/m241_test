@@ -1,0 +1,43 @@
+<div
+        data-bind="
+        dotsquaresBlockLoader: isLoading
+        "
+        id="dotsquares_opc_review"
+        class="dotsquares_opc_column">
+    <div
+            data-bind="hasFocus: reviewFocus"
+            tabindex="-1"
+            class="dotsquares_opc_alternative_column">
+        <div
+                data-bind="
+                click: toggleReview,
+                css: opened()? 'opened' : 'closed'"
+                id="dotsquares_opc_review_head" class="dotsquares_opc_button active with_angle">
+            <!-- ko foreach: getRegion('grand-total-head') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div
+                data-bind="visible: opened"
+                id="dotsquares_opc_review_items_totals">
+            <div id="dotsquares_opc_top_review_items_wrapper" data-bind="afterRender: appendScrollbar">
+                <div id="dotsquares_opc_review_items">
+                    <!-- ko foreach: getRegion('itemsBefore') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+                    <!-- ko foreach: getRegion('cart_items') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+                    <!-- ko foreach: getRegion('itemsAfter') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+                </div>
+            </div>
+            <div id="dotsquares_opc_review_totals">
+                <!-- ko foreach: getRegion('totals') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+        </div>
+    </div>
+</div>

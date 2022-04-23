@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="content">
+
+
+ 
+            <field name="bannerstartdate">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">11</item>
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="label" xsi:type="string" translate="true">Banner Start Date</item>
+                        <item name="formElement" xsi:type="string">date</item>
+                        <item name="scopeLabel" xsi:type="string"/>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">ns = ${ $.ns }, index = custom_use_parent_settings :checked</item>
+                        </item>
+						
+                        <item name="options" xsi:type="array">
+                            <item name="dateFormat" xsi:type="string">MM, DD, YY</item>
+                            <item name="showsTime" xsi:type="boolean">true</item>
+                        </item>
+						<item name="notice" xsi:type="string" translate="true"></item>
+                        <item name="additionalClasses" xsi:type="string">admin__field-date </item>
+                    </item>
+                </argument>
+            </field>
+				  
+            <field name="bannerenddate">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">12</item>
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="label" xsi:type="string" translate="true">Banner End Date</item>
+                        <item name="formElement" xsi:type="string">date</item>
+                        <item name="scopeLabel" xsi:type="string"/>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">ns = ${ $.ns }, index = custom_use_parent_settings :checked</item>
+                        </item>
+						
+                        <item name="options" xsi:type="array">
+                            <item name="dateFormat" xsi:type="string">MM, DD, YY</item>
+                            <item name="showsTime" xsi:type="boolean">true</item>
+                        </item>
+						<item name="notice" xsi:type="string" translate="true"></item>
+                        <item name="additionalClasses" xsi:type="string">admin__field-date </item>
+                    </item>
+                </argument>
+            </field>
+				  
+    </fieldset>
+</form>

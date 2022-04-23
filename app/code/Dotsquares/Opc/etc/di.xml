@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dotsquares\Opc\Api\BalanceManagementInterface" type="Dotsquares\Opc\Model\BalanceManagement"/>
+    <preference for="Dotsquares\Opc\Api\RewardManagementInterface" type="Dotsquares\Opc\Model\RewardManagement" />
+    <preference for="Magento\Downloadable\Observer\IsAllowedGuestCheckoutObserver" type="Dotsquares\Opc\Observer\Downloadable\IsAllowedGuestCheckoutObserver"/>
+    <preference for="Magento\Checkout\Helper\Data" type="Dotsquares\Opc\Helper\Checkout\Data"/>
+    <preference for="Magento\Customer\Model\AccountManagement" type="Dotsquares\Opc\Model\Customer\AccountManagement" />
+    <preference for="Temando\Shipping\Model\Shipping\Carrier" type="Dotsquares\Opc\Model\Shipping\Carrier" />
+    <type name="Magento\GiftCardAccount\Model\Giftcardaccount">
+        <plugin name="dotsquares_opc_giftcardaccount_plugin" type="Dotsquares\Opc\Plugin\GiftCardAccount" />
+    </type>
+    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="dotsquares_opc_save_comment_subscribe" type="Dotsquares\Opc\Plugin\Checkout\PaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
+        <plugin name="dotsquares_opc_save_comment_subscribe" type="Dotsquares\Opc\Plugin\Checkout\GuestPaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Quote\Api\PaymentMethodManagementInterface">
+        <plugin name="dotsquares_opc_save_comment_subscribe" type="Dotsquares\Opc\Plugin\Checkout\PaymentMethodManagement"/>
+    </type>
+    <type name="Magento\Paypal\Model\AbstractConfig">
+        <plugin name="dotsquares_opc_paypal_config" type="Dotsquares\Opc\Plugin\Payments\Paypal\Config"/>
+    </type>
+    <type name="Magento\Customer\Model\Address\AbstractAddress">
+        <plugin name="dotsquares_opc_customer_address" type="Dotsquares\Opc\Plugin\Customer\Model\Address\AbstractAddress"/>
+    </type>
+    <type name="Magento\Payment\Model\InfoInterface">
+        <plugin name="dotsquares_opc_unset_extension_attributes" type="Dotsquares\Opc\Plugin\Payments\Info"/>
+    </type>
+</config>

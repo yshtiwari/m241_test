@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<fieldset name="content">
+		<field name="bannerstartdate">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="required" xsi:type="boolean">true</item>
+					<item name="sortOrder" xsi:type="number">110</item>
+					<item name="dataType" xsi:type="string">string</item>
+					<item name="formElement" xsi:type="string">date</item>
+					<item name="label" xsi:type="string" translate="true">Banner Start Date</item>
+
+				</item>
+			</argument>
+		</field>
+		<field name="bannerenddate">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="required" xsi:type="boolean">true</item>
+					<item name="sortOrder" xsi:type="number">120</item>
+					<item name="dataType" xsi:type="string">string</item>
+					<item name="formElement" xsi:type="string">date</item>
+					<item name="label" xsi:type="string" translate="true">Banner End Date</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+</form>

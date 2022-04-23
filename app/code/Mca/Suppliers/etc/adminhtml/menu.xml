@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mca_Suppliers::mca_suppliers" title="Suppliers" module="Mca_Suppliers" sortOrder="40" resource="Mca_Suppliers::mca_suppliers"/>
+        <add id="Mca_Suppliers::mca_suppliersitem" title="Mca Suppliers" module="Mca_Suppliers" sortOrder="50" parent="Mca_Suppliers::mca_suppliers" action="suppliers/index" resource="Mca_Suppliers::mca_suppliers"/>
+    </menu>
+</config>

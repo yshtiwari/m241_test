@@ -1,0 +1,76 @@
+<!-- ko ifnot: isCustomerLoggedIn -->
+<!-- ko foreach: getRegion('before-login-form') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<div id="dotsquares_opc_login" class="fieldset">
+    <form
+            data-role="email-with-possible-login"
+            data-bind="submit:login, dotsquaresBlockLoader: isLoading"
+            method="post">
+        <div class="dotsquares_opc_universal_wrapper">
+            <input
+                    data-bind="
+                            attr:{
+                                placeholder: placeholder,
+                                title: placeholder
+                            },
+                            textInput: email,
+                            hasFocus: emailFocused"
+                    class="dotsquares_opc_input dotsquares_opc_field"
+                    type="email"
+                    name="username"
+                    data-validate="{required:true, 'validate-email':true}"/>
+            <div
+                    data-bind="visible: !isPasswordVisible()"
+                    id="dotsquares_opc_login_here">
+                <span>Already have an account?</span>
+                <span id="dotsquares_opc_top_login_button">Log in here</span>.
+            </div>
+        </div>
+        <div
+                data-bind="visible: isPasswordVisible"
+                id="dotsquares_opc_login_password" class="dotsquares_opc_universal_wrapper">
+            <input name="context" type="hidden" value="checkout"/>
+            <input
+                    data-bind="attr:{
+                                'type': passwordType,
+                                placeholder: passwordPlaceholder,
+                                title: passwordPlaceholder,
+                            },
+                            hasFocus: passwordFocused"
+                    class="dotsquares_opc_input dotsquares_opc_field"
+                    name="password"
+                    data-validate="{required:true}"
+                    autocomplete="off"/>
+            <span data-bind="
+            css: {
+                'active': passwordType() === 'password'
+            },
+            click: toggleShowHidePassword,
+            attr:{title:$t('Show/Hide password')}"
+                  class="dotsquares_opc_show_hide_password"></span>
+        </div>
+        <div data-bind="visible: isPasswordVisible">
+            <!-- ko foreach: getRegion('additional-login-form-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div
+                data-bind="visible: isPasswordVisible"
+                id="dotsquares_opc_login_buttons" class="dotsquares_opc_universal_wrapper dotsquares_opc_small_button_container">
+            <button
+                    data-bind="i18n: 'Log In', attr:{title:$t('Log In')}"
+                    type="submit" id="dotsquares_opc_login_button" class="dotsquares_opc_small_button active">
+            </button>
+            <button
+                    data-bind="i18n: 'Reset', attr:{title:$t('Reset')}, click: reset"
+                    type="button" id="dotsquares_opc_reset_password_button" class="dotsquares_opc_small_button">
+            </button>
+        </div>
+        <!-- ko foreach: getRegion('errors') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </form>
+</div>
+<div class="dotsquares_opc_section_delimiter"></div>
+<!-- /ko -->
